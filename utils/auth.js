@@ -1,3 +1,3 @@
 import axios from 'axios'
 
-export const login = async (email) => await axios.post('/api/login', { email });
+export const loginJWT = async (email) => await axios.post('http://localhost:3000/api/u/login', email)

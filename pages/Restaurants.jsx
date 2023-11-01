@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { selectRestaurantById, fetchRestaurantById } from "../../features/restaurant/restaurantSlice";
+import { selectRestaurantById, fetchRestaurantById } from "../features/restaurant/restaurantSlice";
 
 
 function Restaurants() {

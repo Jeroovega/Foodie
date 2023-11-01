@@ -10,6 +10,7 @@ function Navbar() {
         navigate(`/restaurants/${id}`);
     }
     return (
+      <>
         <form onSubmit={handleSubmit}>
         <label>
           Ingresar ID del restaurante:
@@ -21,6 +22,10 @@ function Navbar() {
         </label>
         <button type="submit">Ir al Restaurante</button>
       </form>
+      <div>
+        <button onClick={() => navigate('/login')}>Iniciar Sesión</button>
+      </div>
+      </>
     );
 };
 
