@@ -6,7 +6,7 @@ function Navbar() {
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate(`/restaurants/${id}`);
+    navigate(`/restaurant/${id}/details`);
   }
 
   const handleLogout = () => {

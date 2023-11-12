@@ -16,16 +16,20 @@ const loginSlice = createSlice({                                                
         email: null,
         token: null,
         isAuth: localStorage.getItem('isAuth') === 'true' ? true : false,
+        userId: null,
         error: null
     },
     reducers: {                                                                         // creamos los reducers que son las funciones que modifican el estado
         loginSetData: (state, action) => {                                                     // seteamos los datos
-            console.log(action.payload)
+            console.log(action.payload.data)
             state.email = action.payload.email;
             state.token = action.payload.token;
+            localStorage.setItem('token', action.payload.token);
             state.isAuth = true;
             state.error = null;
             localStorage.setItem('isAuth', true);
+            state.userId = action.payload.data.id;
+            localStorage.setItem('userId', action.payload.data.id);
         },
         logout: (state) => {                                                            // borramos los datos
             state.email = null;
@@ -33,6 +37,9 @@ const loginSlice = createSlice({                                                
             state.isAuth = false;
             state.error = null;
             localStorage.removeItem('isAuth');
+            localStorage.removeItem('token');
+            localStorage.removeItem('userId');
+            state.userId = null;
         },
     },
     extraReducers: (builder) => {                                                       // creamos los reducers extra que son los que se ejecutan cuando se llama a un thunk

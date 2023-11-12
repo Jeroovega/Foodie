@@ -9,12 +9,6 @@ function Restaurants() {
     const dispatch = useDispatch();
     const restaurant = useSelector(selectRestaurantById);
 
-    useEffect(() => {
-        console.log('Id:', id)
-        console.log('Restaurant:', restaurant)
-        dispatch(fetchRestaurantById(id));
-    }, [dispatch, id]);
-
     return (
         <>
           <div>
