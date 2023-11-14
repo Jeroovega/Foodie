@@ -14,7 +14,6 @@ const RatingComponent = ({ onAddRating }) => {
             console.log({ id, restaurantId, rating });
             const response = await postRating({ id, restaurantId, rating });
             if (response.status === 201) {
-                alert('puntuacion agregada');
                 console.log(response);
                 onAddRating(rating);
             }

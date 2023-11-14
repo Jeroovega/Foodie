@@ -21,7 +21,7 @@ function Login() {
       dispatch(loginSetData(response.payload));
       if (login.fulfilled.match(response)) {
         console.log(`Bienvenido ${email}!`);
-        navigate('/home');
+        // navigate('/');
       }
     } catch (error) {
       console.error("Error inesperado:", error);

@@ -1,28 +1,39 @@
-import { useEffect } from "react";
+import Category from "../components/category/Category";
+import { useState, useEffect } from 'react';
+import { fetchByCategories, selectRestByCategory } from "../features/restaurant/restaurantSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
-import { selectRestaurantById, fetchRestaurantById } from "../features/restaurant/restaurantSlice";
-
 
 function Restaurants() {
-    const id = useParams().id;
+    const [selectedCategory, setSelectedCategory] = useState('Hamburguesa');
     const dispatch = useDispatch();
-    const restaurant = useSelector(selectRestaurantById);
 
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await dispatch(fetchByCategories(selectedCategory));
+          console.log(response);
+        } catch(error) {
+          console.log(error);
+        }
+      }
+      fetchData();
+    }, [dispatch, fetchByCategories, selectedCategory]);
+
+    const handleCategory = (category) => {
+      setSelectedCategory(category);
+    }
+
+    const restaurants = useSelector(selectRestByCategory)
     return (
         <>
-          <div>
-            {restaurant ? (
-              <>
-                <h1>{restaurant.data.name}</h1>
-                <p>{restaurant.data.address}</p>
-                <p>{restaurant.data.schedule}</p>
-                <button onClick={() => navigate(-1)}>Back</button>
-              </>
-            ) : (
-              <p>Loading...</p>
-            )}
-          </div>
+          <Category onSelect={handleCategory}/>
+            {
+              restaurants && restaurants.map((restaurant) => (
+                <div key={restaurant.id}>
+                  <h1>{restaurant.name}</h1>
+                </div>
+              ))
+            }
         </>
       );
 }
