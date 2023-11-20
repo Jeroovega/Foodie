@@ -21,31 +21,39 @@ function Login() {
       dispatch(loginSetData(response.payload));
       if (login.fulfilled.match(response)) {
         console.log(`Bienvenido ${email}!`);
-        navigate('/home');
+        navigate('/restaurants');
       }
     } catch (error) {
       console.error("Error inesperado:", error);
     }
   }
   return (
-    <div>
+    <div className="text-center mb-24">
+      <h1 className="text-[3rem] text-[#199B1E] font-extrabold mb-4">FOODIE</h1>
+      <div className="bg-white flex flex-col items-center p-6 rounded-md h-auto gap-4 ">
+        <p>Iniciar Sesión</p>
       <input
+        className="border p-1.5 pl-3 rounded-sm"
         type="text"
-        placeholder="Nombre de usuario"
+        placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
       <input
+        className="border p-1.5 pl-3 rounded-sm"
         type="password"
         placeholder="Contraseña"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button type='submit' onClick={handleLogin}>Iniciar sesión con JWT</button>
-      <div>
-        <a href="#">Registrarse</a>
-        <a href="#">¿Olvidaste tu contraseña?</a>
+      <button type='submit' onClick={handleLogin} className="bg-[#199B1E] pl-[2.7rem] pr-[2.7rem] pt-2 pb-2 rounded-sm text-white">INICIAR SESION</button>
+      <div className="flex flex-col">
+      <p>¿No tienes cuenta?</p>
+        <button
+         className="text-blue-900 underline underline-offset-2"
+         onClick={() => navigate("/register")}>Registrarse</button>
       </div>
+    </div>
     </div>
   )
 }

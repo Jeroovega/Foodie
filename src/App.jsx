@@ -4,7 +4,7 @@ import { Suspense } from "react";
 function App() {
     return (
         <Suspense fallback={<div>Cargando...</div>}>
-            <AppRoutes />
+            <AppRoutes/>
         </Suspense>
     )
 }
