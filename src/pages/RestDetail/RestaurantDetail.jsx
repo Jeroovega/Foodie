@@ -10,6 +10,11 @@ function RestaurantDetail() {
     const dispatch = useDispatch();
     const restaurantId = useParams().id;
     const [averageRating, setAverageRating] = useState(null);
+    const [restaurantInfo, setRestaurantInfo] = useState({
+        name: "",
+        address: "",
+        schedule: ""
+    });
     
     // Obtener puntuaciones del restaurante y promedio al cargar la página
     useEffect(() => {
@@ -17,9 +22,14 @@ function RestaurantDetail() {
             try {
                 const response = await dispatch(fetchRating({ id: restaurantId }));
                 const response2 = await dispatch(fetchRestaurantById({ id: restaurantId }));
-                const newAverageRating = response.payload.averageRating.averageRating.toFixed(1);
-                setAverageRating(newAverageRating);
-                dispatch(setRestaurant(response2.payload.restaurant));
+                // const newAverageRating = response.payload.averageRating.averageRating.toFixed(1);
+                // setAverageRating(newAverageRating);
+                // dispatch(setRestaurant(response2.payload.restaurant));
+                setRestaurantInfo({
+                    name: response2.payload.restaurant.name,
+                    address: response2.payload.restaurant.address,
+                    schedule: response2.payload.restaurant.schedule
+                })
             } catch (error) {
                 console.log(error);
             };
@@ -29,7 +39,7 @@ function RestaurantDetail() {
 
     
     // Selector para acceder a las puntuaciones
-    const ratings = useSelector(selectRating);
+    // const ratings = useSelector(selectRating);
     // selector para acceder al restaurante
     const restaurant = useSelector(selectRestaurantById);
     console.log(restaurant);
@@ -43,7 +53,13 @@ function RestaurantDetail() {
     return (
         <div>
             <div>
-                
+                {restaurantInfo.name && (
+                    <div>
+                        <h2>{restaurantInfo.name}</h2>
+                        <p>{restaurantInfo.address}</p>
+                        <p>{restaurantInfo.schedule}</p>
+                    </div>
+                )}
             </div>
             <div>
                 <p>Promedio de puntuación: {averageRating}</p>
