@@ -16,7 +16,7 @@ function Navbar() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.setItem("isAuth", false);
-    navigate("/session/login");
+    navigate("/login");
   };
 
   useEffect(() => {

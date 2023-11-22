@@ -40,7 +40,6 @@ function RestaurantDetail() {
     };
 
     
-    
     return (
         <div>
             <div>

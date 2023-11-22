@@ -35,7 +35,7 @@ const restaurantSlice = createSlice({
         topRest: [],
     },
     reducers: {
-        setRestaurant: (state, action) => {
+             setRestaurant: (state, action) => {
             return {
                 ...state,
                 restaurant: action.payload
@@ -55,7 +55,7 @@ const restaurantSlice = createSlice({
     }
 });
 
-export const { setRestaurant } = restaurantSlice.actions;
+export const { setRestaurant, isPending, isError } = restaurantSlice.actions;
 export default restaurantSlice.reducer;
 
 export const selectRestaurantById = createSelector(

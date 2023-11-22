@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { loginJWT } from "../../utils/auth";
+import { user } from "../../utils/user";
 
 export const login = createAsyncThunk('u/login', async ({ email, password }) => {      // creamos el thunk para el login q recibe el email y el password y hace la llamada a la api
     try {
@@ -10,10 +11,22 @@ export const login = createAsyncThunk('u/login', async ({ email, password }) => 
     }
 });
 
+export const RequestEditUser = createAsyncThunk(
+    'u/edit', 
+    async ({ email, password, firstName, lastName }) => {
+        try {
+            const response = await user({ email, password, firstName, lastName});
+            return response.data;
+        } catch (error) {
+            throw error;
+        }
+});
+
+
 const loginSlice = createSlice({                                                        // creamos el slice para el login
     name: 'login',                                                                      // le ponemos el nombre
     initialState: {                                                                     // le ponemos el estado inicial
-        email: null,
+        email: '',
         token: null,
         isAuth: localStorage.getItem('isAuth') === 'true' ? true : false,
         userId: null,
@@ -22,7 +35,7 @@ const loginSlice = createSlice({                                                
     reducers: {                                                                         // creamos los reducers que son las funciones que modifican el estado
         loginSetData: (state, action) => {                                                     // seteamos los datos
             console.log(action.payload.data)
-            state.email = action.payload.email;
+            state.email = action.payload.data.email;
             state.token = action.payload.token;
             localStorage.setItem('token', action.payload.token);
             state.isAuth = true;
@@ -57,10 +70,25 @@ const loginSlice = createSlice({                                                
                 ...state,
                 error: action.error.message
             }
-        });
+        })
+        .addCase(RequestEditUser.fulfilled, (state, action) => {
+            return {
+             ...state,
+             email: action.payload.email,
+             token: action.payload.token,
+             error: null
+            }
+         })
+         .addCase(RequestEditUser.rejected, (state, action) => {
+             return {
+                 ...state,
+                 isEdited: true,
+                 error: action.error.message
+             }
+         });
     },
 });
 
-export const { logout, loginSetData } = loginSlice.actions;   
-
+export const { logout, loginSetData } = loginSlice.actions;
+export const selectEmail = (state) => state.login.email;
 export default loginSlice.reducer;
