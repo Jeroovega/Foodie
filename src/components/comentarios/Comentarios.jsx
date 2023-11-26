@@ -16,7 +16,7 @@ export const Comentarios = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
-    <>
+    <div>
       <button
         className="btn px-2 py-2 rounded-md ml-36 mt-2 text-black bg-white hover:text-white cursor-pointer"
         onClick={() => document.getElementById("my_modal_1").showModal()}
@@ -43,6 +43,6 @@ export const Comentarios = () => {
           </div>
         </div>
       </dialog>
-    </>
+    </div>
   );
 };

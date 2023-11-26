@@ -32,13 +32,13 @@ const RestaurantPlatos = () => {
   }
 
   return (
-    <div>
-      <h2>Platos del restaurante</h2>
+    <div className="bg-black p-4 h-full">
+      <h2 className="pt-4 pb-6">Platos del restaurante</h2>
       {platos.map((plato) => (
-        <div key={plato.id}>
-          <h3>{plato.name}</h3>
-          <p>{plato.description}</p>
-          <p>{plato.price}</p>
+        <div key={plato.id} className="flex flex-col w-[33.33%] mb-4 bg-white p-6 gap-4"> {/* Añade una clase de margen inferior */}
+          <h3 className="">{plato.name}</h3>
+          <p className="">{plato.description}</p>
+          <p className="">{plato.price}</p>
         </div>
       ))}
     </div>

@@ -9,7 +9,6 @@
 /* Sección del lado izquierdo en el que se encuentra la info del restaurante, imagen, nombre, dirección y puntaje */
 .rest-menu-izquierda {
     width: 30%;
-    height: 52.8rem;
     background-color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
@@ -22,16 +21,6 @@
 }
 
 
-.rest-izquierda-img {
-    width: 100%;
-    height: 300px;
-    max-width: 1200px;
-    max-height: 300px;
-    min-width: 577px;
-    min-height: 200px;
-    object-fit: cover;
-
-}
 
 .rest-izq-datos {
     width: 100%;
@@ -67,7 +56,7 @@
 
 /* Sección del lado derecho con todas las cards de los platos, dividda por grids. */
 .rest-platos-derecha {
-    height: 80.7vh;
+    height: 99%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;

@@ -8,7 +8,6 @@ import { fetchRestaurantById, selectRestaurantById, setRestaurant } from "../../
 import { img } from "../../utils/fotos";
 import RestaurantPlatos from "../../components/Platos/RestaurantPlatos";
 import { Comentarios } from "../../components/comentarios/Comentarios";
-import "./RestaurantDetail.css";
 
 function RestaurantDetail() {
     const dispatch = useDispatch();
@@ -47,88 +46,39 @@ function RestaurantDetail() {
     const handleAddRating = (rating) => {
         dispatch(postRating({ id: restaurantId, rating }));
     };
-    // la funcion para reemplazar caracteres numericos por "num" es =>  .replace(/\d/g, "num")
-    const restaurantImageKey = restaurantInfo?.name.toLowerCase().replace(/\s/g, "").replace(/&/g, "").replace(/'/g, "").replace(/\d/g, "num").replace(/,/g, "").replace(/í/g, "i").replace(/ñ/, "n");
-    let restaurantImageSrc = img[restaurantImageKey];
 
     return (
-        <div className="contenedor-rest-details">
-            <div className="rest-menu-izquierda">
-
-                <div className="rest-menu-izquierda-datos">
+        <div className="flex lg:w-[100vw] lg:h-[87vh] lg:mt-24">
+            <div className= "flex flex-col lg:w-[33%] bg-[#ccc] border border-[#D0D0D0]">
+                <div className="flex lg:w-full">
                     {restaurantInfo && (
                         <div>
-                            <img src={restaurantImageSrc} alt={restaurantInfo.name} className="rest-izquierda-img" />
-                            <div className="rest-izq-datos">
-                                <h2 className="rest-izquierda-nombre">{restaurantInfo.name}</h2>
-                                <p className="rest-izquierda-direccion">{restaurantInfo.address}</p>
-                                <p className="rest-izquierda-horario">{restaurantInfo.schedule}</p>
+                            <div className="flex flex-col lg:w-full justify-between lg:p-[20px]">
+                                <h2 className="lg:text-[40px] font-bold">{restaurantInfo.name}</h2>
+                                <p className="lg:text-[18px] font-semibold text-[#595959]">{restaurantInfo.address}</p>
+                                <p className="lg:text-[18px] font-semibold text-[#595959]">{restaurantInfo.schedule}</p>
                             </div>
                         </div>
                     )}
                 </div>
 
-                <div className="rest-izquierda-puntaje">
+                <div className="lg:text-[18px] font-semibold text-[#595959] lg:pl-[20px]">
                     <p>Promedio de puntuación: {averageRating}</p>
                     <RatingComponent onAddRating={handleAddRating} />
                 </div>
-              <div className="">
-                    <Comentarios />
-                </div>
+                
+                <Comentarios />
+            
             </div>
-            <div>
-                <div className="rest-derecha-texto">
+            <div className="flex flex-col lg:w-[77%]">
+                <div className="bg-[#fff] lg:w-100 p-3">
                     {restaurantInfo && (
                         <div>
-                            <h1 className="rest-derecha-nombre">{restaurantInfo.name} - Menú</h1>
+                            <h1 className="lg:text-[30px] font-semibold">{restaurantInfo.name} - Menú</h1>
                         </div>
                     )}
                 </div>
-                <div className="rest-platos-derecha">
-                    <div className="rest-derecha-cards">
-                        <div className="rest-derecha-card">
-                            <div className="text-card">
-                                <h2>Sushi</h2>
-                                <p >Sushi de salmón</p>
-                            </div>
-                            <img src="https://www.elespectador.com/resizer/K2brM6Hi31V7arlBysmWGMrj6mY=/525x350/filters:quality(60):format(jpeg)/cloudfront-us-east-1.images.arcpublishing.com/elespectador/SDB552A6BBHANGBCLVEIYRL3KY.jpg" alt="sushi" className="img-card" />
-                        </div>
-                    </div>
-                    <div className="rest-derecha-cards">
-                        <div className="rest-derecha-card">
-                            <div className="text-card">
-                                <h2>Sushi</h2>
-                                <p >Sushi de salmón</p>
-                            </div>
-                            <img src="https://www.elespectador.com/resizer/K2brM6Hi31V7arlBysmWGMrj6mY=/525x350/filters:quality(60):format(jpeg)/cloudfront-us-east-1.images.arcpublishing.com/elespectador/SDB552A6BBHANGBCLVEIYRL3KY.jpg" alt="sushi" className="img-card" />
-                        </div>
-                    </div>
-                    <div className="rest-derecha-cards">
-                        <div className="rest-derecha-card">
-                            <div className="text-card">
-                                <h2>Sushi</h2>
-                                <p >Sushi de salmón</p>
-                            </div>
-                            <img src="https://www.elespectador.com/resizer/K2brM6Hi31V7arlBysmWGMrj6mY=/525x350/filters:quality(60):format(jpeg)/cloudfront-us-east-1.images.arcpublishing.com/elespectador/SDB552A6BBHANGBCLVEIYRL3KY.jpg" alt="sushi" className="img-card" />
-                        </div>
-                    </div>
-                    <div className="rest-derecha-cards">
-                        <div className="rest-derecha-card">
-                            <div className="text-card">
-                                <h2>Sushi</h2>
-                                <p >Sushi de salmón</p>
-                            </div>
-                            <img src="https://www.elespectador.com/resizer/K2brM6Hi31V7arlBysmWGMrj6mY=/525x350/filters:quality(60):format(jpeg)/cloudfront-us-east-1.images.arcpublishing.com/elespectador/SDB552A6BBHANGBCLVEIYRL3KY.jpg" alt="sushi" className="img-card" />
-                        </div>
-                    </div>
-                    <RestaurantPlatos className='rest-derecha-cards' />
-                    <RestaurantPlatos className='rest-derecha-cards' />
-                    <RestaurantPlatos className='rest-derecha-cards' />
-                    <RestaurantPlatos className='rest-derecha-cards' />
-                    <RestaurantPlatos className='rest-derecha-cards' />
-                    <RestaurantPlatos className='rest-derecha-cards' />
-                </div>
-
+                    <RestaurantPlatos />
             </div>
         </div>
 

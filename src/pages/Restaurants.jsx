@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { fetchByCategories, selectRestByCategory } from "../features/restaurant/restaurantSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
 function Restaurants() {
     const [selectedCategory, setSelectedCategory] = useState('Hamburguesa');
     const dispatch = useDispatch();
