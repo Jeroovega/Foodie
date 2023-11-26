@@ -7,6 +7,7 @@ import { useState } from "react";
 import { fetchRestaurantById, selectRestaurantById, setRestaurant } from "../../features/restaurant/restaurantSlice";
 import { img } from "../../utils/fotos";
 import RestaurantPlatos from "../../components/Platos/RestaurantPlatos";
+import { Comentarios } from "../../components/comentarios/Comentarios";
 import "./RestaurantDetail.css";
 
 function RestaurantDetail() {
@@ -53,6 +54,7 @@ function RestaurantDetail() {
     return (
         <div className="contenedor-rest-details">
             <div className="rest-menu-izquierda">
+
                 <div className="rest-menu-izquierda-datos">
                     {restaurantInfo && (
                         <div>
@@ -65,9 +67,13 @@ function RestaurantDetail() {
                         </div>
                     )}
                 </div>
+
                 <div className="rest-izquierda-puntaje">
                     <p>Promedio de puntuación: {averageRating}</p>
                     <RatingComponent onAddRating={handleAddRating} />
+                </div>
+              <div className="">
+                    <Comentarios />
                 </div>
             </div>
             <div>

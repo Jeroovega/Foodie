@@ -2,14 +2,13 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getPlatos } from "../../utils/platos";
 import { createSelector } from "reselect";
 
-
-
 export const fetchPlatos = createAsyncThunk(
   "platos/fetchPlatos",
-  async () => {
+  async ({restaurantId}) => {
     try {
-      const response = await getPlatos(restaurantId);
-      return response.data;
+      const response = await getPlatos({ restaurantId });
+      console.log("response", response.data.data.platos);
+      return response.data.data.platos;
     } catch (error) {
       // En caso de error, puedes devolver el error usando rejectWithValue
       throw error;

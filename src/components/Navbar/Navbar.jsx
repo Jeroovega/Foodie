@@ -94,7 +94,7 @@ function Navbar() {
           className="input_search border-2 border-[#a3a1a1] rounded-md p-1 lg:p-3 lg:w-96 lg:h-12 cursor-text"
           placeholder="Comidas, restaurantes, etc."
         />
-        <button></button>
+        <button className="bg-zinc-700 text-white mx-2 px-2 py-2 rounded-lg m-4 h-10">Search</button>
       </form>
       <div className="m-2 p-1" onClick={toggleMenu2}>
 
