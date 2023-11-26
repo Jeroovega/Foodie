@@ -12,7 +12,7 @@ function Category({ onSelect }) {
         <>
             <div>
                 {
-                    ['Hamburguesa', 'Panaderia', 'Pizza', 'Internacional', 'Postres'].map((category) => (
+                    ['Cafeteria', 'Comida Rapida', 'Gourmet', 'Pastas', 'Internacional'].map((category) => (
                         <div key={category}>
                             <span
                                 key={category}

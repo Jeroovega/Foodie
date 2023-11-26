@@ -1,3 +1,5 @@
 import axios from 'axios';
 
-export const getPlatos = async (id) => await axios.get(`/api/restaurants/${id}/platos`)
+export const getPlatos = async ( { restaurantId }) => await axios.get(`http://localhost:3000/api/restaurants/${restaurantId}/platos`)
+
+

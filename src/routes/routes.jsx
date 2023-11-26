@@ -6,6 +6,7 @@ import Session from '../pages/UserSession/Session';
 import RestaurantDetail from '../pages/RestDetail/RestaurantDetail';
 import Profile from '../pages/Profile/Profile';
 import EditProfile from '../pages/Profile/EditProfile'
+import RestaurantPlatos from '../components/Platos/RestaurantPlatos';
 const Register = lazy(() => import('../components/Register/Register'));
 const Login = lazy(() => import('../components/Login/Login'));
 
@@ -18,6 +19,7 @@ function AppRoutes() {
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
             <Route path='/restaurant/:id/details' element={<RestaurantDetail/>}/>
+            <Route path='/restaurant/:id/platos' element={<RestaurantPlatos/>}/>
             <Route path='/restaurants' element={<Restaurants />} />
             <Route path='/profile' element={<Profile />} />
             <Route path='/editProfile' element={<EditProfile />} />
