@@ -11,14 +11,39 @@ import {
   Input,
   Link,
 } from "@nextui-org/react";
+import { useDispatch } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { postComment } from "../../features/commet/comment";
 
 export const Comentarios = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [description, setData] = React.useState("");
+
+
+  const handleCommentChange = (e) => {
+    setData(e);
+  };
+
+  const handlePostComment = async () => {
+    const restaurantId = window.location.pathname.split("/")[2];
+    const id = localStorage.getItem('userId');
+    try {
+      const response = await dispatch(postComment({ id, description, restaurantId }));
+      if (response.status === 201) {
+        console.log(response);
+        navigate(`/restaurants/${restaurantId}/details`);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
-    <div>
+    <div className="w-34">
       <button
-        className="btn px-2 py-2 rounded-md ml-36 mt-2 text-black bg-white hover:text-white cursor-pointer"
+        className="btn px-2 py-2 rounded-md  mt-2 text-black bg-white hover:text-white cursor-pointer"
         onClick={() => document.getElementById("my_modal_1").showModal()}
       >
         Escribir una reseña
@@ -29,13 +54,15 @@ export const Comentarios = () => {
           <h3 className="font-bold text-lg"></h3>
           <div className="modal-action flex">
             <div className="flex h-80">
-              <div className="mt-20">
-                <form method="dialog">
+              <div className="mt-20 w-full">
+                <form method="dialog" className="flex flex-col w-full ">
                   <textarea
                     className="textarea bg-transparent"
                     placeholder="Deje un comentario"
+                    onChange={(e) => handleCommentChange(e.target.value)}
                   ></textarea>
-                  <button className="btn rounded-r-full mx-2">Enviar</button>
+                  <button className="btn rounded-r-full mx-2"
+                    onClick={handlePostComment}>Enviar</button>
                   <button className="btn">Close</button>
                 </form>
               </div>
