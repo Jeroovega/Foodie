@@ -6,7 +6,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'cafeteria': 'url(public/categorias/cafeteria.jpg)',
+      }
+    },
   },
   darkMode: "class",
   plugins: [require("daisyui")],
