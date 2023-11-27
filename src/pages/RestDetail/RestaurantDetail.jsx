@@ -8,6 +8,7 @@ import { fetchRestaurantById, selectRestaurantById, setRestaurant } from "../../
 import { img } from "../../utils/fotos";
 import RestaurantPlatos from "../../components/Platos/RestaurantPlatos";
 import { Comentarios } from "../../components/comentarios/Comentarios";
+import { ListaOfComents } from "../../components/comentarios/ListaOfComents";
 
 function RestaurantDetail() {
     const dispatch = useDispatch();
@@ -67,7 +68,10 @@ function RestaurantDetail() {
                     <RatingComponent onAddRating={handleAddRating} />
                 </div>
                 
+                <div className="absolute top-[40rem] ml-28">
                 <Comentarios />
+                <ListaOfComents />
+                </div>
             
             </div>
             <div className="flex flex-col lg:w-[77%]">
@@ -78,7 +82,7 @@ function RestaurantDetail() {
                         </div>
                     )}
                 </div>
-                    <RestaurantPlatos />
+                <RestaurantPlatos />
             </div>
         </div>
 

@@ -13,9 +13,7 @@ const Login = lazy(() => import('../components/Login/Login'));
 function AppRoutes() {
     return (
         <>
-        <div className='h-full' >
-        <Navbar/>
-
+        <Navbar />
         <Routes>
             <Route path='/' element={<Session />} />
             <Route path='/login' element={<Login />} />
@@ -26,7 +24,6 @@ function AppRoutes() {
             <Route path='/profile' element={<Profile />} />
             <Route path='/editProfile' element={<EditProfile />} />
         </Routes>
-        </div>
         </>
     );
 };
