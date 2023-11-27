@@ -82,7 +82,7 @@ function RestaurantDetail() {
                         </div>
                     )}
                 </div>
-                <RestaurantPlatos />
+                    <RestaurantPlatos />
             </div>
         </div>
 

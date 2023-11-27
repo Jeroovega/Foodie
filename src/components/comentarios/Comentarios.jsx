@@ -51,13 +51,13 @@ export const Comentarios = () => {
       </button>
       <dialog id="my_modal_1" className="modal">
         <div className="modal-box">
-          <h3 className="font-bold text-lg"></h3>
-          <div className="modal-action flex">
+          <h3 className="text-lg font-bold"></h3>
+          <div className="flex modal-action">
             <div className="flex h-80">
-              <div className="mt-20 w-full">
-                <form method="dialog" className="flex flex-col w-full ">
+              <div className="mt-20">
+                <form method="dialog">
                   <textarea
-                    className="textarea bg-transparent"
+                    className="bg-transparent textarea"
                     placeholder="Deje un comentario"
                     onChange={(e) => handleCommentChange(e.target.value)}
                   ></textarea>
