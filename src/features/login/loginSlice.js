@@ -45,8 +45,7 @@ const loginSlice = createSlice({                                                
         userData: {}
     },
     reducers: {                                                                         // creamos los reducers que son las funciones que modifican el estado
-        loginSetData: (state, action) => {                                                     // seteamos los datos
-            console.log(action.payload.data)
+        loginSetData: (state, action) => {                                                 // seteamos los datos
             state.email = action.payload.data.email;
             state.token = action.payload.token;
             localStorage.setItem('token', action.payload.token);
