@@ -11,39 +11,14 @@ import {
   Input,
   Link,
 } from "@nextui-org/react";
-import { useDispatch } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
-import { postComment } from "../../features/commet/comment";
 
 export const Comentarios = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const [description, setData] = React.useState("");
-
-
-  const handleCommentChange = (e) => {
-    setData(e);
-  };
-
-  const handlePostComment = async () => {
-    const restaurantId = window.location.pathname.split("/")[2];
-    const id = localStorage.getItem('userId');
-    try {
-      const response = await dispatch(postComment({ id, description, restaurantId }));
-      if (response.status === 201) {
-        console.log(response);
-        navigate(`/restaurants/${restaurantId}/details`);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
-    <div className="w-34">
+    <div>
       <button
-        className="btn px-2 py-2 rounded-md  mt-2 text-black bg-white hover:text-white cursor-pointer"
+        className="px-2 py-2 mt-2 text-black bg-white rounded-md cursor-pointer  btn ml-36 hover:text-white"
         onClick={() => document.getElementById("my_modal_1").showModal()}
       >
         Escribir una reseña
@@ -51,18 +26,16 @@ export const Comentarios = () => {
       </button>
       <dialog id="my_modal_1" className="modal">
         <div className="modal-box">
-          <h3 className="font-bold text-lg"></h3>
-          <div className="modal-action flex">
+          <h3 className="text-lg font-bold"></h3>
+          <div className="flex modal-action">
             <div className="flex h-80">
-              <div className="mt-20 w-full">
-                <form method="dialog" className="flex flex-col w-full ">
+              <div className="mt-20">
+                <form method="dialog">
                   <textarea
-                    className="textarea bg-transparent"
+                    className="bg-transparent textarea"
                     placeholder="Deje un comentario"
-                    onChange={(e) => handleCommentChange(e.target.value)}
                   ></textarea>
-                  <button className="btn rounded-r-full mx-2"
-                    onClick={handlePostComment}>Enviar</button>
+                  <button className="mx-2 rounded-r-full btn">Enviar</button>
                   <button className="btn">Close</button>
                 </form>
               </div>

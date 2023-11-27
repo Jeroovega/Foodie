@@ -56,7 +56,7 @@ function Navbar() {
   }
 
   return (
-    <nav className="flex flex-row bg-[#fff] w-full text-sm text-center items-center p-3 lg:p-4 justify-between absolute top-0 left-0">
+    <nav className="flex flex-row bg-[#fff] w-full text-sm text-center items-center p-3 lg:p-4 justify-between fixed top-0 left-0">
       <div className="m-2 text-center" onClick={toggleMenu}>
         <IoMdMenu className="text-2xl lg:text-4xl text-[#000] cursor-pointer" />
       </div>
@@ -65,22 +65,22 @@ function Navbar() {
         <div className="absolute right-0 top-2 pr-2.5 cursor-pointer" onClick={closeMenu}>
           <MdClose className="text-2xl" />
         </div>
-        <div className="mt-6 gap-4 flex flex-col mb-4 lg:h-full lg:gap-10">
+        <div className="flex flex-col gap-4 mt-6 mb-4 lg:h-full lg:gap-10">
           <a href="/">LOGO</a>
-          <div className="contenedor-menu gap-10">
+          <div className="gap-10 contenedor-menu">
             <div>
-              <h3 className="titulo-menu text-4xl">SECCIONES</h3>
+              <h3 className="text-4xl titulo-menu">SECCIONES</h3>
               <div className="separador-login-register" />
-              <ul className="texto-menu flex flex-col mt-10 gap-10 text-left font-semibold ">
-                <li className="cursor-pointer flex justify-between items-center">RESTAURANTS <IoIosArrowForward /></li>
-                <li className="cursor-pointer flex justify-between items-center">EMPRENDIMIENTOS <IoIosArrowForward /></li>
+              <ul className="flex flex-col gap-10 mt-10 font-semibold text-left texto-menu ">
+                <li className="flex items-center justify-between cursor-pointer">RESTAURANTS <IoIosArrowForward /></li>
+                <li className="flex items-center justify-between cursor-pointer">EMPRENDIMIENTOS <IoIosArrowForward /></li>
               </ul>
             </div>
             <div>
-              <h3 className="titulo-menu text-4xl TE">OTROS</h3>
+              <h3 className="text-4xl titulo-menu TE">OTROS</h3>
               <div className="separador-login-register" />
-              <ul className="texto-menu flex flex-col mt-10 gap-10 text-left font-semibold">
-                <li className="cursor-pointer flex justify-between items-center">SOBRE NOSOTROS <IoIosArrowForward /></li>
+              <ul className="flex flex-col gap-10 mt-10 font-semibold text-left texto-menu">
+                <li className="flex items-center justify-between cursor-pointer">SOBRE NOSOTROS <IoIosArrowForward /></li>
               </ul>
             </div>
           </div>
@@ -94,11 +94,11 @@ function Navbar() {
           className="input_search border-2 border-[#a3a1a1] rounded-md p-1 lg:p-3 lg:w-96 lg:h-12 cursor-text"
           placeholder="Comidas, restaurantes, etc."
         />
-        <button className="bg-zinc-700 text-white mx-2 px-2 py-2 rounded-lg m-4 h-10">Search</button>
+        <button className="h-10 px-2 py-2 m-4 mx-2 text-white rounded-lg bg-zinc-700">Search</button>
       </form>
-      <div className="m-2 p-1" onClick={toggleMenu2}>
+      <div className="p-1 m-2" onClick={toggleMenu2}>
 
-        <FaUser className='lg:text-3xl cursor-pointer'/>
+        <FaUser className='cursor-pointer lg:text-3xl'/>
       </div>
       <div id="user-menu" className={`absolute right-0 mt-[9.5rem] gap-3 bg-[#fff] flex flex-col p-4 lg:w-52 rounded-sm lg:text-lg font-semibold border-2 border-[#a3a1a1] cursor-pointer lg:mr-6 lg:mt-[11.6rem] ${isUserMenuOpen ? '' : 'invisible'}`}>
         {
